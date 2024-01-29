@@ -1,5 +1,5 @@
 
-use crossbeam_channel::{Sender, Receiver};
+use crossbeam_channel::{Sender};
 use std::io::{BufRead, BufReader};
 use std::path::PathBuf;
 use std::fs::File;

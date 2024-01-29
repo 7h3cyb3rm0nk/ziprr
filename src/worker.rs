@@ -14,7 +14,7 @@ pub fn password_checker(
     let file = File::open(file_path).expect("file should exist");
     thread::Builder::new()
         .name( format!("worker-{}", index))
-        .spawn( || {
+        .spawn(  move || {
             let mut archive = zip::ZipArchive::new(file).expect("Archive validated before-hand");
             loop {
                 match receive_password.recv() {

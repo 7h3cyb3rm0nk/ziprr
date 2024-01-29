@@ -1,6 +1,6 @@
 use crossbeam_channel::{Receiver};
 use std::fs::File;
-
+use std::io::Read;
 use std::path::{Path};
 use std::thread;
 use std::thread::JoinHandle;
@@ -28,18 +28,18 @@ pub fn password_checker(
                                 let mut buffer = Vec::with_capacity(zip.size() as usize);
                                 match zip.read_to_end(&mut buffer) {
                                     Err(_) => (),
-                                    OK(_) => {
+                                    Ok(_) => {
                                         println!("password found: {}", password);
                                         break; // stop thread
-                                    }
-                                }
+                                    },
+                                };
                             },
-                            }
+                            };
                         }
                     }
                 }
             }
-        })
+        )
         .unwrap()
 }
 
